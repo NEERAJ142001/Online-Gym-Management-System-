@@ -1,0 +1,55 @@
+package com.example.gym.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.gym.entity.Userdetails;
+import com.example.gym.service.UserService;
+
+@Controller
+public class HomeController {
+
+	@Autowired
+	private UserService userService;
+
+	@GetMapping("/")
+	public String index() {
+		return "index";
+	}
+
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+
+	@GetMapping("/register")
+	public String register() {
+		return "register";
+	}
+
+	@GetMapping("/logout")
+	public String logout() {
+		return "logout";
+	}
+
+	@PostMapping("/newUser")
+	public String saveuser(@ModelAttribute Userdetails user) {
+		Userdetails entry = userService.saveUser(user);
+		if (entry != null) {
+			if (entry.getPassword().equals(entry.getConfirmPassword())) {
+				System.out.println("recheck your password");
+			} else {
+				System.out.println("saved successfully");
+			}
+
+		} else {
+			System.out.println("error");
+		}
+//		System.out.println(user);
+		return "redirect:/ register";
+	}
+
+}

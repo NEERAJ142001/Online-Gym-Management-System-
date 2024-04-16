@@ -1,0 +1,18 @@
+package com.example.gym.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.gym.entity.Userdetails;
+import com.example.gym.repository.UserRepository;
+
+public class UserSeviceImpl implements UserService {
+	@Autowired
+	private UserRepository userRepo;
+
+	@Override
+	public Userdetails sasveUser(Userdetails user) {
+		Userdetails newuser =userRepo.save(user)
+		return newuser;
+	}
+
+}
