@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+
+<body>
+	<section>
+		<section class="vh-80">
+			<div class="container py-5 h-100">
+				<div class="row d-flex justify-content-center align-items-center h-100">
+					<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+						<div class="card shadow-2-strong" style="border-radius: 1rem;">
+							<div class="card-body p-5 text-center" style="background-color: orange;">
+								<form action="newUser" method="post">
+									<h3 class="mb-5">REGISTER NOW</h3>
+
+
+									<!--	<div th:if="${session.message}" th:text="${session.message}">
+										<h1 class="text-center" th:text="${session.message}"></h1>
+									</div>-->
+
+
+									<div th:if="${session.message}" th:text="${session.message}" class="text-center"
+										style="font-size: 30px;">
+										<th:block th:text="${@userService.removeSession()}"></th:block>
+									</div>
+
+
+
+									<div data-mdb-input-init class="form-outline mb-4">
+										<input name="username" placeholder="Username" style="color: black;" type="text"
+											id="typeEmailX-2" class="form-control form-control-lg" />
+									</div>
+
+									<div data-mdb-input-init class="form-outline mb-4">
+										<input name="email" placeholder="Email address" style="color: black;"
+											type="email" class="form-control form-control-lg" />
+									</div>
+
+									<div data-mdb-input-init class="form-outline mb-4">
+										<input name="pnumber" placeholder="Phone No." style="color: black;"
+											type="number" class="form-control form-control-lg" />
+									</div>
+
+									<div data-mdb-input-init class="form-outline mb-4">
+										<input name="password" placeholder="Password" style="color: black;"
+											type="password" class="form-control form-control-lg" />
+									</div>
+
+									<div data-mdb-input-init class="form-outline mb-4">
+										<input name="ConfirmPassword" placeholder="Confirm password"
+											style="color: black;" type="password"
+											class="form-control form-control-lg" />
+									</div>
+
+									<button data-mdb-button-init data-mdb-ripple-init
+										class="btn btn-primary btn-lg btn-block" type="submit">SIGN UP</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+	</section>
+</body>

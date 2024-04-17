@@ -1,0 +1,4 @@
+<!-- removeSessionFragment.html -->
+<div th:fragment="removeSession">
+    <th:block th:remove="${session.removeAttribute('message')}"></th:block>
+</div>

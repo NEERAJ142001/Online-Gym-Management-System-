@@ -41,22 +41,25 @@ public class HomeController {
 	}
 
 	@PostMapping("/newUser")
-	public String saveuser(@ModelAttribute Userdetails user, HttpServletRequest request,
-			HttpServletResponse response,HttpSession session) {
-		
+	public String saveuser(@ModelAttribute Userdetails user, HttpServletRequest request, HttpServletResponse response,
+			HttpSession session, Model model) {
 
 		// Check if email already exists
 		boolean emailExists = userService.checkEmail(user.getEmail());
 		if (emailExists) {
 			System.out.println("Email already exists");
-	    	session.setAttribute("message", "Email already exists");
+			session.setAttribute("message", "Email already exists");
+//			userService.removesession();
+			
 			return "redirect:/register"; // Redirect back to registration page
 		}
 
 		// Check if password matches confirm password
 		if (!user.getPassword().equals(user.getConfirmPassword())) {
 			System.out.println("Password and confirm password do not match");
-	        session.setAttribute("message", "Password and confirm password do not match");
+			session.setAttribute("message", "Password and confirm password do not match");
+//			userService.removesession();
+			
 			return "redirect:/register"; // Redirect back to registration page
 		}
 
@@ -64,11 +67,18 @@ public class HomeController {
 		Userdetails entry = userService.saveUser(user);
 		if (entry != null) {
 			System.out.println("User saved successfully");
-	    	session.setAttribute("message", "Registered Successfully");
+			session.setAttribute("message", "Registered Successfully");
+//			session.removeAttribute("message");
+			// Remove the session attribute after displaying the message
+//			userService.removesession();
+			
+
 			return "redirect:/register"; // Redirect to login page after successful registration
 		} else {
-	    	session.setAttribute("message", "Something is wrong");
+			session.setAttribute("message", "Something is wrong");
 			System.out.println("Something is wrong");
+			 
+//			userService.removesession();
 			return "redirect:/register"; // Redirect back to registration page on error
 		}
 	}

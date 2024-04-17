@@ -3,6 +3,10 @@ package com.example.gym.service;
 import com.example.gym.entity.Userdetails;
 
 public interface UserService {
-public Userdetails saveUser(Userdetails user);
-public boolean checkEmail(String email);
+	Userdetails saveUser(Userdetails user);
+
+	boolean checkEmail(String email);
+
+	void removeSession();
+
 }

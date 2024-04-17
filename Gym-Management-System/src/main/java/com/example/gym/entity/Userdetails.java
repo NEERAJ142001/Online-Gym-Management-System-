@@ -16,7 +16,15 @@ public class Userdetails {
 	private String email;
 	private String password;
 	private String ConfirmPassword;
-	
+	private long pnumber;
+	public long getPnumber() {
+		return pnumber;
+	}
+
+	public void setPnumber(long pnumber) {
+		this.pnumber = pnumber;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -60,8 +68,10 @@ public class Userdetails {
 	@Override
 	public String toString() {
 		return "Userdetails [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
-				+ ", ConfirmPassword=" + ConfirmPassword + "]";
+				+ ", ConfirmPassword=" + ConfirmPassword + ", pnumber=" + pnumber + "]";
 	}
+
+	
 	
 	
 }
